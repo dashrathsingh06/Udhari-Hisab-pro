@@ -1,84 +1,534 @@
-background:#128c7e;
-  color:white;
-  font-size:17px;
-  font-weight:bold;
-  cursor:pointer;
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#128c7e">
+
+<title>उधारी हिसाब Pro</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+ margin:0;
+ font-family:Arial,"Noto Sans Devanagari",sans-serif;
+ background:#f1f5f9;
+ color:#17202a;
 }
 
-.add-btn:active{
-  transform:scale(.98);
+header{
+ background:linear-gradient(135deg,#075e54,#128c7e);
+ color:white;
+ text-align:center;
+ padding:25px 15px;
 }
 
-.summary{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
+header h1{
+ margin:0;
+ font-size:30px;
 }
 
-.box{
-  background:#fff;
-  border-radius:13px;
-  padding:17px;
-  text-align:center;
-  box-shadow:0 3px 10px rgba(0,0,0,.07);
+header p{
+ margin:10px 0 0;
+ font-size:17px;
 }
 
-.box span{
-  display:block;
-  font-size:13px;
-  color:#666;
-  margin-bottom:7px;
+.container{
+ max-width:700px;
+ margin:auto;
+ padding:18px;
 }
 
-.box strong{
-  font-size:21px;
-  color:#075e54;
+.card{
+ background:white;
+ border-radius:20px;
+ padding:20px;
+ margin-bottom:18px;
+ box-shadow:0 5px 20px #0001;
 }
 
-.person{
-  border:1px solid #e4e4e4;
-  border-radius:12px;
-  padding:15px;
-  margin-bottom:12px;
-  background:#fff;
+h2{
+ margin-top:0;
+ color:#087f72;
 }
 
-.person-name{
-  font-size:18px;
-  font-weight:bold;
-  margin-bottom:8px;
+label{
+ display:block;
+ font-weight:bold;
+ margin:15px 0 7px;
+ font-size:17px;
 }
 
-.mobile{
-  color:#555;
-  font-size:14px;
-  margin-bottom:8px;
+input,textarea{
+ width:100%;
+ padding:15px;
+ border:2px solid #ddd;
+ border-radius:13px;
+ font-size:17px;
+ outline:none;
 }
 
-.amount{
-  background:#fff4f4;
-  color:#c62828;
-  padding:10px;
-  border-radius:8px;
-  font-size:18px;
-  font-weight:bold;
-  margin:8px 0;
+input:focus,textarea:focus{
+ border-color:#128c7e;
 }
 
-.note{
-  font-size:14px;
-  color:#555;
-  margin-top:8px;
+button{
+ border:0;
+ border-radius:13px;
+ padding:14px 18px;
+ font-size:17px;
+ font-weight:bold;
+ cursor:pointer;
+ margin-top:12px;
 }
 
-.date{
-  color:#888;
-  font-size:12px;
-  margin-top:9px;
+.add{
+ width:100%;
+ background:#128c7e;
+ color:white;
+}
+
+.deposit{
+ width:100%;
+ background:#219653;
+ color:white;
+}
+
+.whatsapp{
+ background:#25d366;
+ color:white;
+}
+
+.qrbtn{
+ background:#333;
+ color:white;
 }
 
 .delete{
-  width:100%;
-  margin-top:12px;
-  padding:10px;
-  border:0;
+ background:#e53935;
+ color:white;
+}
+
+.summary{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:12px;
+}
+
+.box{
+ padding:18px;
+ border-radius:15px;
+ text-align:center;
+ color:white;
+}
+
+.box b{
+ display:block;
+ font-size:25px;
+ margin-top:6px;
+}
+
+.total{
+ background:#34495e;
+}
+
+.green{
+ background:#219653;
+}
+
+.red{
+ background:#e53935;
+}
+
+.customer{
+ border-radius:16px;
+ padding:17px;
+ margin-top:15px;
+ border-left:7px solid #e53935;
+ background:#fff5f5;
+}
+
+.customer.clear{
+ border-left-color:#219653;
+ background:#f0fff5;
+}
+
+.customer h3{
+ margin:0 0 8px;
+}
+
+.amount{
+ font-size:22px;
+ font-weight:bold;
+}
+
+.remaining{
+ color:#d32f2f;
+ font-weight:bold;
+}
+
+.clear .remaining{
+ color:#219653;
+}
+
+.actions{
+ display:flex;
+ flex-wrap:wrap;
+ gap:7px;
+}
+
+.actions button{
+ flex:1;
+ min-width:130px;
+}
+
+#qr{
+ text-align:center;
+}
+
+#qr img{
+ width:220px;
+ max-width:100%;
+ border-radius:10px;
+}
+
+.small{
+ color:#666;
+ font-size:14px;
+ text-align:center;
+}
+
+.empty{
+ text-align:center;
+ color:#777;
+ padding:20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>📒 उधारी हिसाब Pro</h1>
+<p>उधारी जोड़ें • उधारी जमा करें • WhatsApp हिसाब • QR कोड</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<h2>➕ नई उधारी जोड़ें</h2>
+
+<label>ग्राहक का नाम</label>
+<input id="name" placeholder="ग्राहक का नाम">
+
+<label>मोबाइल नंबर</label>
+<input id="mobile" type="tel" maxlength="10" placeholder="10 अंकों का मोबाइल नंबर">
+
+<label>उधारी की रकम</label>
+<input id="amount" type="number" placeholder="जैसे 500">
+
+<label>नोट</label>
+<textarea id="note" placeholder="जैसे पेट्रोल, डीजल आदि..."></textarea>
+
+<button class="add" onclick="addDebt()">➕ उधारी जोड़ें</button>
+
+</div>
+
+
+<div class="card">
+
+<h2>📊 हिसाब</h2>
+
+<div class="summary">
+
+<div class="box total">
+कुल उधारी
+<b id="totalDebt">₹0</b>
+</div>
+
+<div class="box green">
+कुल जमा
+<b id="totalPaid">₹0</b>
+</div>
+
+<div class="box red">
+कुल बाकी
+<b id="totalRemain">₹0</b>
+</div>
+
+<div class="box" style="background:#795548">
+ग्राहक
+<b id="totalCustomers">0</b>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>👥 ग्राहकों का हिसाब</h2>
+
+<div id="list">
+<div class="empty">अभी कोई उधारी नहीं है।</div>
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>🔳 QR Code</h2>
+
+<p class="small">
+इस QR को स्कैन करके आपकी उधारी हिसाब वेबसाइट खोली जा सकती है।
+</p>
+
+<div id="qr"></div>
+
+<button class="qrbtn" style="width:100%" onclick="makeQR()">
+🔄 QR Code बनाएं
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+let customers = JSON.parse(localStorage.getItem("udhariCustomers") || "[]");
+
+
+function save(){
+ localStorage.setItem("udhariCustomers",JSON.stringify(customers));
+}
+
+
+function addDebt(){
+
+ const name=document.getElementById("name").value.trim();
+ const mobile=document.getElementById("mobile").value.trim();
+ const amount=Number(document.getElementById("amount").value);
+ const note=document.getElementById("note").value.trim();
+
+ if(!name){
+  alert("कृपया ग्राहक का नाम लिखें।");
+  return;
+ }
+
+ if(!amount || amount<=0){
+  alert("कृपया उधारी की रकम लिखें।");
+  return;
+ }
+
+ const customer={
+  id:Date.now(),
+  name:name,
+  mobile:mobile,
+  debt:amount,
+  paid:0,
+  note:note,
+  date:new Date().toLocaleDateString("hi-IN")
+ };
+
+ customers.push(customer);
+ save();
+
+ document.getElementById("name").value="";
+ document.getElementById("mobile").value="";
+ document.getElementById("amount").value="";
+ document.getElementById("note").value="";
+
+ render();
+
+ alert("उधारी सफलतापूर्वक जोड़ दी गई।");
+
+}
+
+
+function deposit(id){
+
+ const customer=customers.find(x=>x.id===id);
+
+ if(!customer) return;
+
+ const remaining=customer.debt-customer.paid;
+
+ const value=prompt(
+  "कितनी रकम जमा हुई?\nबाकी: ₹"+remaining
+ );
+
+ if(value===null) return;
+
+ const amount=Number(value);
+
+ if(!amount || amount<=0){
+  alert("सही रकम डालें।");
+  return;
+ }
+
+ if(amount>remaining){
+  alert("जमा रकम बाकी रकम से ज्यादा नहीं हो सकती।");
+  return;
+ }
+
+ customer.paid += amount;
+
+ save();
+ render();
+}
+
+
+function whatsapp(id){
+
+ const c=customers.find(x=>x.id===id);
+
+ if(!c) return;
+
+ const remain=c.debt-c.paid;
+
+ let message=
+ "📒 *उधारी हिसाब Pro*%0A%0A"+
+ "👤 ग्राहक: "+encodeURIComponent(c.name)+"%0A"+
+ "💰 कुल उधारी: ₹"+c.debt+"%0A"+
+ "🟢 जमा: ₹"+c.paid+"%0A"+
+ "🔴 बाकी: ₹"+remain+"%0A";
+
+ if(c.note){
+  message+="📝 नोट: "+encodeURIComponent(c.note)+"%0A";
+ }
+
+ message+="%0Aकृपया बाकी रकम जमा कर दें। 🙏";
+
+ if(!c.mobile){
+  alert("इस ग्राहक का मोबाइल नंबर नहीं है।");
+  return;
+ }
+
+ const phone="91"+c.mobile;
+
+ window.open(
+  "https://wa.me/"+phone+"?text="+message,
+  "_blank"
+ );
+
+}
+
+
+function removeCustomer(id){
+
+ if(!confirm("क्या इस ग्राहक का पूरा हिसाब हटाना है?")){
+  return;
+ }
+
+ customers=customers.filter(x=>x.id!==id);
+
+ save();
+ render();
+
+}
+
+
+function render(){
+
+ const list=document.getElementById("list");
+
+ let totalDebt=0;
+ let totalPaid=0;
+
+ if(customers.length===0){
+
+  list.innerHTML='<div class="empty">अभी कोई उधारी नहीं है।</div>';
+
+ }else{
+
+  list.innerHTML="";
+
+  customers.slice().reverse().forEach(c=>{
+
+   const remain=c.debt-c.paid;
+
+   totalDebt+=c.debt;
+   totalPaid+=c.paid;
+
+   const div=document.createElement("div");
+
+   div.className="customer "+(remain<=0?"clear":"");
+
+   div.innerHTML=`
+
+   <h3>👤 ${escapeHTML(c.name)}</h3>
+
+   <div>📱 ${c.mobile || "मोबाइल नंबर नहीं है"}</div>
+
+   <div>📅 ${c.date}</div>
+
+   <hr>
+
+   <div>कुल उधारी: <b>₹${c.debt}</b></div>
+
+   <div>जमा: <b style="color:#219653">₹${c.paid}</b></div>
+
+   <div class="amount ${remain<=0?"":"remaining"}">
+   ${remain<=0 ? "🟢 पूरा जमा" : "🔴 बाकी: ₹"+remain}
+   </div>
+
+   ${c.note ? "<div>📝 "+escapeHTML(c.note)+"</div>" : ""}
+
+   <div class="actions">
+
+   ${remain>0 ? `
+   <button class="deposit" onclick="deposit(${c.id})">
+   💵 उधारी जमा
+   </button>` : ""}
+
+   <button class="whatsapp" onclick="whatsapp(${c.id})">
+   📱 WhatsApp
+   </button>
+
+   <button class="delete" onclick="removeCustomer(${c.id})">
+   🗑️ हटाएं
+   </button>
+
+   </div>
+   `;
+
+   list.appendChild(div);
+
+  });
+
+  customers.forEach(c=>{
+   totalDebt+=0;
+  });
+
+ }
+
+ document.getElementById("totalDebt").innerText="₹"+totalDebt;
+ document.getElementById("totalPaid").innerText="₹"+totalPaid;
+ document.getElementById("totalRemain").innerText="₹"+(totalDebt-totalPaid);
+ document.getElementById("totalCustomers").innerText=customers.length;
+
+}
+
+
+function escapeHTML(text){
+
+ return String(text)
+ .replaceAll("&","&amp;")
+ .replaceAll("<","&lt;")
+ .replaceAll(">","&gt;")
+ .replaceAll('"',"&quot;")
+ .replaceAll("'","&#039;");
+
+}
+
+
+function makeQR(){
+
+ const url=window.location.href;
+
+ const qr
