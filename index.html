@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Udhari Hisab Pro</title>
+
+<title>Udhar Hisaab Pro</title>
 
 <style>
 *{
@@ -14,23 +15,25 @@ body{
   margin:0;
   font-family:Arial,sans-serif;
   background:#f4f7fb;
-  color:#172033;
+  color:#222;
 }
 
 header{
-  background:linear-gradient(135deg,#0b57d0,#174ea6);
+  background:linear-gradient(135deg,#075e54,#128c7e);
   color:white;
   padding:22px 16px;
   text-align:center;
+  box-shadow:0 3px 10px rgba(0,0,0,.15);
 }
 
 header h1{
   margin:0;
-  font-size:27px;
+  font-size:25px;
 }
 
 header p{
-  margin:7px 0 0;
+  margin:6px 0 0;
+  font-size:14px;
   opacity:.9;
 }
 
@@ -42,90 +45,151 @@ header p{
 
 .card{
   background:white;
-  border-radius:16px;
+  border-radius:15px;
   padding:18px;
   margin-bottom:15px;
-  box-shadow:0 4px 15px rgba(0,0,0,.08);
+  box-shadow:0 3px 12px rgba(0,0,0,.08);
 }
 
 .card h2{
   margin-top:0;
   font-size:20px;
+  color:#075e54;
 }
 
-input{
+label{
+  display:block;
+  font-weight:bold;
+  margin-top:12px;
+  margin-bottom:6px;
+}
+
+input,textarea{
   width:100%;
   padding:13px;
-  border:1px solid #d7dce5;
+  border:1px solid #ddd;
   border-radius:10px;
-  margin:7px 0;
   font-size:16px;
+  outline:none;
 }
 
-button{
+input:focus,textarea:focus{
+  border-color:#128c7e;
+}
+
+textarea{
+  resize:none;
+  height:75px;
+}
+
+.add-btn{
   width:100%;
-  padding:13px;
+  margin-top:16px;
+  padding:14px;
   border:0;
   border-radius:10px;
-  background:#0b57d0;
+  background:#128c7e;
   color:white;
-  font-size:16px;
+  font-size:17px;
   font-weight:bold;
-  margin-top:8px;
+  cursor:pointer;
 }
 
-button.delete{
-  background:#dc3545;
+.add-btn:active{
+  transform:scale(.98);
 }
 
 .summary{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:10px;
+  gap:12px;
 }
 
 .box{
-  padding:15px;
-  border-radius:12px;
-  background:#eef4ff;
+  background:#fff;
+  border-radius:13px;
+  padding:17px;
   text-align:center;
+  box-shadow:0 3px 10px rgba(0,0,0,.07);
+}
+
+.box span{
+  display:block;
+  font-size:13px;
+  color:#666;
+  margin-bottom:7px;
 }
 
 .box strong{
-  display:block;
-  font-size:22px;
-  margin-top:5px;
+  font-size:21px;
+  color:#075e54;
 }
 
 .person{
-  border:1px solid #e1e5eb;
+  border:1px solid #e4e4e4;
   border-radius:12px;
-  padding:14px;
-  margin-top:10px;
+  padding:15px;
+  margin-bottom:12px;
+  background:#fff;
 }
 
 .person-name{
-  font-weight:bold;
   font-size:18px;
+  font-weight:bold;
+  margin-bottom:8px;
+}
+
+.mobile{
+  color:#555;
+  font-size:14px;
+  margin-bottom:8px;
 }
 
 .amount{
-  color:#dc3545;
+  background:#fff4f4;
+  color:#c62828;
+  padding:10px;
+  border-radius:8px;
+  font-size:18px;
   font-weight:bold;
-  margin-top:5px;
+  margin:8px 0;
+}
+
+.note{
+  font-size:14px;
+  color:#555;
+  margin-top:8px;
+}
+
+.date{
+  color:#888;
+  font-size:12px;
+  margin-top:9px;
+}
+
+.delete{
+  width:100%;
+  margin-top:12px;
+  padding:10px;
+  border:0;
+  border-radius:8px;
+  background:#e53935;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
 }
 
 .empty{
   text-align:center;
   color:#777;
-  padding:20px;
+  padding:25px 10px;
 }
 
 footer{
   text-align:center;
+  color:#888;
+  font-size:12px;
   padding:20px;
-  color:#777;
-  font-size:13px;
 }
 </style>
 </head>
@@ -133,8 +197,8 @@ footer{
 <body>
 
 <header>
-  <h1>💰 Udhari Hisab Pro</h1>
-  <p>उधारी का हिसाब आसान और सुरक्षित</p>
+  <h1>📒 उधारी हिसाब Pro</h1>
+  <p>ग्राहकों की उधारी का आसान हिसाब</p>
 </header>
 
 <div class="container">
@@ -142,155 +206,307 @@ footer{
   <div class="card">
     <h2>➕ नई उधारी जोड़ें</h2>
 
-    <input id="name" type="text" placeholder="ग्राहक का नाम">
+    <label>ग्राहक का नाम</label>
+    <input
+      type="text"
+      id="name"
+      placeholder="ग्राहक का नाम लिखें"
+    >
 
-    <input id="mobile" type="tel" placeholder="मोबाइल नंबर">
+    <label>मोबाइल नंबर</label>
+    <input
+      type="tel"
+      id="mobile"
+      placeholder="मोबाइल नंबर"
+      maxlength="10"
+    >
 
-    <input id="amount" type="number" placeholder="रकम ₹">
+    <label>उधारी की रकम</label>
+    <input
+      type="number"
+      id="amount"
+      placeholder="जैसे 500"
+      min="1"
+    >
 
-    <input id="note" type="text" placeholder="नोट / सामान">
+    <label>नोट</label>
+    <textarea
+      id="note"
+      placeholder="जैसे पेट्रोल, डीजल आदि..."
+    ></textarea>
 
-    <button onclick="addUdhari()">उधारी जोड़ें</button>
+    <button class="add-btn" onclick="addUdhari()">
+      ➕ उधारी जोड़ें
+    </button>
   </div>
 
-  <div class="card">
-    <h2>📊 कुल हिसाब</h2>
 
-    <div class="summary">
-      <div class="box">
-        ग्राहक
-        <strong id="totalPeople">0</strong>
-      </div>
+  <div class="summary">
 
-      <div class="box">
-        कुल उधारी
-        <strong>₹<span id="totalAmount">0</span></strong>
-      </div>
+    <div class="box">
+      <span>👥 कुल ग्राहक</span>
+      <strong id="totalPeople">0</strong>
     </div>
+
+    <div class="box">
+      <span>💰 कुल उधारी</span>
+      <strong>₹<span id="totalAmount">0</span></strong>
+    </div>
+
   </div>
 
-  <div class="card">
+
+  <div class="card" style="margin-top:15px;">
     <h2>📋 उधारी की सूची</h2>
+
     <div id="list">
-      <div class="empty">अभी कोई उधारी नहीं है।</div>
+      <div class="empty">
+        अभी कोई उधारी नहीं है।
+      </div>
     </div>
+
   </div>
 
 </div>
 
 <footer>
-  Udhari Hisab Pro © 2026
+  Udhar Hisaab Pro © 2026
 </footer>
+
 
 <script>
 
-let udhari = JSON.parse(localStorage.getItem("udhariData")) || [];
+let udhari = JSON.parse(
+  localStorage.getItem("udhariData") || "[]"
+);
+
+
+/* =========================
+   DATA SAVE
+========================= */
 
 function saveData(){
-  localStorage.setItem("udhariData", JSON.stringify(udhari));
+
+  localStorage.setItem(
+    "udhariData",
+    JSON.stringify(udhari)
+  );
+
 }
+
+
+/* =========================
+   ADD UDHARI
+========================= */
 
 function addUdhari(){
 
-  const name = document.getElementById("name").value.trim();
-  const mobile = document.getElementById("mobile").value.trim();
-  const amount = Number(document.getElementById("amount").value);
-  const note = document.getElementById("note").value.trim();
+  const name =
+    document.getElementById("name").value.trim();
+
+  const mobile =
+    document.getElementById("mobile").value.trim();
+
+  const amount =
+    Number(document.getElementById("amount").value);
+
+  const note =
+    document.getElementById("note").value.trim();
+
 
   if(!name){
+
     alert("कृपया ग्राहक का नाम डालें।");
     return;
+
   }
+
 
   if(!amount || amount <= 0){
+
     alert("कृपया सही रकम डालें।");
     return;
+
   }
 
+
   udhari.push({
+
     id:Date.now(),
+
     name:name,
+
     mobile:mobile,
+
     amount:amount,
+
     note:note,
+
     date:new Date().toLocaleDateString("hi-IN")
+
   });
 
+
   saveData();
+
 
   document.getElementById("name").value="";
   document.getElementById("mobile").value="";
   document.getElementById("amount").value="";
   document.getElementById("note").value="";
 
+
   showData();
+
 }
+
+
+/* =========================
+   DELETE UDHARI
+========================= */
 
 function deleteUdhari(id){
 
   if(confirm("क्या आप यह उधारी हटाना चाहते हैं?")){
-    udhari = udhari.filter(item => item.id !== id);
+
+    udhari =
+      udhari.filter(item => item.id !== id);
+
     saveData();
+
     showData();
+
   }
+
 }
+
+
+/* =========================
+   SHOW DATA
+========================= */
 
 function showData(){
 
-  const list = document.getElementById("list");
+  const list =
+    document.getElementById("list");
 
-  document.getElementById("totalPeople").textContent = udhari.length;
 
-  const total = udhari.reduce((sum,item)=>sum + item.amount,0);
+  document.getElementById("totalPeople")
+    .textContent = udhari.length;
 
-  document.getElementById("totalAmount").textContent =
+
+  const total =
+    udhari.reduce(
+      (sum,item) => sum + Number(item.amount),
+      0
+    );
+
+
+  document.getElementById("totalAmount")
+    .textContent =
     total.toLocaleString("en-IN");
 
+
   if(udhari.length === 0){
+
     list.innerHTML =
       '<div class="empty">अभी कोई उधारी नहीं है।</div>';
+
     return;
+
   }
+
 
   list.innerHTML = "";
 
-  udhari.slice().reverse().forEach(item=>{
 
-    const div = document.createElement("div");
+  udhari
+    .slice()
+    .reverse()
+    .forEach(item => {
 
-    div.className="person";
+      const div =
+        document.createElement("div");
 
-    div.innerHTML=`
-      <div class="person-name">👤 ${escapeHtml(item.name)}</div>
+      div.className = "person";
 
-      ${item.mobile ?
-      `<div>📞 ${escapeHtml(item.mobile)}</div>` : ""}
 
-      <div class="amount">
-        उधारी: ₹${item.amount.toLocaleString("en-IN")}
-      </div>
+      div.innerHTML = `
 
-      ${item.note ?
-      `<div>📝 ${escapeHtml(item.note)}</div>` : ""}
+        <div class="person-name">
+          👤 ${escapeHtml(item.name)}
+        </div>
 
-      <div style="font-size:12px;color:#777;margin-top:5px;">
-        📅 ${item.date}
-      </div>
 
-      <button class="delete" onclick="deleteUdhari(${item.id})">
-        उधारी हटाएँ
-      </button>
-    `;
+        ${
+          item.mobile
+          ?
+          `<div class="mobile">
+             📞 ${escapeHtml(item.mobile)}
+           </div>`
+          :
+          ""
+        }
 
-    list.appendChild(div);
-  });
+
+        <div class="amount">
+          उधारी: ₹${Number(item.amount)
+            .toLocaleString("en-IN")}
+        </div>
+
+
+        ${
+          item.note
+          ?
+          `<div class="note">
+             📝 ${escapeHtml(item.note)}
+           </div>`
+          :
+          ""
+        }
+
+
+        <div class="date">
+          📅 ${escapeHtml(item.date)}
+        </div>
+
+
+        <button
+          class="delete"
+          onclick="deleteUdhari(${item.id})"
+        >
+          🗑️ उधारी हटाएँ
+        </button>
+
+      `;
+
+
+      list.appendChild(div);
+
+    });
+
 }
+
+
+/* =========================
+   SECURITY
+========================= */
 
 function escapeHtml(text){
-  const div=document.createElement("div");
-  div.textContent=text;
+
+  const div =
+    document.createElement("div");
+
+  div.textContent = text;
+
   return div.innerHTML;
+
 }
+
+
+/* =========================
+   START
+========================= */
 
 showData();
 
