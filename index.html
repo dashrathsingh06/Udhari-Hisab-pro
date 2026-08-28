@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#128c7e">
-
+<meta name="theme-color" content="#087f6f">
 <title>उधारी हिसाब Pro</title>
 
 <style>
@@ -21,89 +20,108 @@ header{
  background:linear-gradient(135deg,#087f6f,#19a58f);
  color:white;
  text-align:center;
- padding:25px 15px;
+ padding:24px 12px;
 }
 
 header h1{
  margin:0;
- font-size:32px;
+ font-size:29px;
 }
 
 header p{
- margin:10px 0 0;
- font-size:17px;
+ margin:8px 0 0;
+ font-size:16px;
 }
 
 .wrap{
  max-width:760px;
- margin:20px auto;
- padding:0 14px;
+ margin:18px auto;
+ padding:0 12px;
+}
+
+.nav{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:8px;
+ margin-bottom:18px;
+}
+
+.nav button{
+ background:#e4e9ed;
+ color:#222;
+ border:0;
+ border-radius:13px;
+ padding:13px 5px;
+ font-weight:bold;
+ font-size:15px;
+}
+
+.nav button.active{
+ background:#087f6f;
+ color:white;
 }
 
 .card{
  background:white;
  border-radius:20px;
- padding:20px;
- margin-bottom:18px;
- box-shadow:0 5px 18px #0001;
+ padding:18px;
+ margin-bottom:16px;
+ box-shadow:0 4px 15px #0001;
 }
 
 h2{
- margin:0 0 18px;
+ margin:0 0 16px;
  color:#087f6f;
 }
 
 label{
  display:block;
  font-weight:bold;
- margin:13px 0 7px;
- font-size:17px;
+ margin:12px 0 6px;
 }
 
-input,textarea{
+input,select,textarea{
  width:100%;
- padding:14px;
+ padding:13px;
  border:1px solid #ddd;
- border-radius:13px;
- font-size:17px;
+ border-radius:12px;
+ font-size:16px;
 }
 
 textarea{
- min-height:85px;
-}
-
-button{
- border:0;
- border-radius:12px;
- padding:13px 16px;
- font-size:16px;
- font-weight:bold;
+ min-height:75px;
 }
 
 .add{
  width:100%;
+ margin-top:15px;
+ padding:14px;
+ border:0;
+ border-radius:12px;
  background:#128c7e;
  color:white;
- margin-top:16px;
+ font-size:17px;
+ font-weight:bold;
 }
 
 .stats{
  display:grid;
- grid-template-columns:repeat(3,1fr);
+ grid-template-columns:repeat(2,1fr);
  gap:10px;
 }
 
 .stat{
- padding:15px;
- border-radius:14px;
- text-align:center;
+ padding:17px 10px;
+ border-radius:15px;
  font-weight:bold;
+ text-align:center;
+ cursor:pointer;
 }
 
 .stat b{
  display:block;
  font-size:21px;
- margin-top:5px;
+ margin-top:6px;
 }
 
 .red{
@@ -121,10 +139,15 @@ button{
  color:#1769aa;
 }
 
+.orange{
+ background:#fff1dc;
+ color:#c77700;
+}
+
 .customer{
  border:1px solid #ddd;
  border-radius:16px;
- padding:16px;
+ padding:15px;
  margin-top:12px;
 }
 
@@ -133,24 +156,27 @@ button{
 }
 
 .balance{
- font-size:22px;
+ font-size:21px;
  font-weight:bold;
- margin:10px 0;
+ margin:9px 0;
 }
 
-.redtxt{
- color:#d32f2f;
-}
-
-.greentxt{
- color:#18864b;
-}
+.redtxt{color:#d32f2f}
+.greentxt{color:#18864b}
 
 .actions{
  display:flex;
  flex-wrap:wrap;
- gap:8px;
+ gap:7px;
  margin-top:12px;
+}
+
+.actions button{
+ flex:1 1 45%;
+ padding:11px 8px;
+ border:0;
+ border-radius:10px;
+ font-weight:bold;
 }
 
 .deposit{
@@ -168,14 +194,22 @@ button{
  color:white;
 }
 
-.qr{
- background:#555;
+.history{
+ background:#1769aa;
  color:white;
 }
 
-.small{
- font-size:14px;
+.entry{
+ border-left:5px solid #087f6f;
+ background:#f7fafb;
+ padding:13px;
+ border-radius:10px;
+ margin:10px 0;
+}
+
+.entry .date{
  color:#666;
+ font-size:13px;
 }
 
 .empty{
@@ -184,30 +218,29 @@ button{
  padding:20px;
 }
 
-.qrbox{
- text-align:center;
+.small{
+ color:#666;
+ font-size:14px;
+ margin-top:4px;
 }
 
-#qrImage{
- max-width:220px;
+.hidden{
  display:none;
- margin:15px auto;
+}
+
+.back{
+ background:#555;
+ color:white;
+ border:0;
+ border-radius:10px;
+ padding:10px 14px;
+ margin-bottom:12px;
 }
 
 @media(max-width:600px){
-
- .stats{
-  grid-template-columns:1fr;
+ .nav button{
+  font-size:13px;
  }
-
- .actions button{
-  flex:1 1 45%;
- }
-
- header h1{
-  font-size:27px;
- }
-
 }
 </style>
 </head>
@@ -215,45 +248,53 @@ button{
 <body>
 
 <header>
-<h1>📒 उधारी हिसाब Pro</h1>
-<p>उधारी जोड़ें • उधारी जमा करें • WhatsApp हिसाब • QR कोड</p>
+<h1>📒 Shree PrabhuRaj Indian Oil</h1>
+<p>उधारी एवं दैनिक हिसाब प्रबंधन</p>
 </header>
 
 <div class="wrap">
 
-<div class="card">
-
-<h2>➕ नई उधारी जोड़ें</h2>
-
-<label>ग्राहक का नाम</label>
-<input id="name" placeholder="ग्राहक का नाम लिखें">
-
-<label>मोबाइल नंबर</label>
-<input id="mobile"
-       inputmode="numeric"
-       maxlength="10"
-       placeholder="10 अंकों का मोबाइल नंबर">
-
-<label>उधारी की रकम</label>
-<input id="amount"
-       type="number"
-       min="0"
-       placeholder="जैसे 500">
-
-<label>नोट</label>
-<textarea id="note"
-          placeholder="जैसे पेट्रोल, डीजल आदि..."></textarea>
-
-<button class="add" onclick="addCustomer()">
-➕ उधारी जोड़ें
-</button>
-
+<div class="nav">
+<button class="active" onclick="showSection('dashboard',this)">डैशबोर्ड</button>
+<button onclick="showSection('new',this)">नई एंट्री</button>
+<button onclick="showSection('customers',this)">ग्राहक</button>
+<button onclick="showSection('report',this)">रिपोर्ट</button>
 </div>
 
+<!-- DASHBOARD -->
+
+<div id="dashboard">
 
 <div class="card">
+<h2>📊 आज का हिसाब</h2>
 
-<h2>📊 कुल हिसाब</h2>
+<div class="stats">
+
+<div class="stat red" onclick="showTodayDebt()">
+आज की उधारी
+<b id="todayDebt">₹0</b>
+</div>
+
+<div class="stat green" onclick="showPayment('Cash')">
+कैश
+<b id="todayCash">₹0</b>
+</div>
+
+<div class="stat blue" onclick="showPayment('UPI')">
+UPI / Paytm
+<b id="todayUPI">₹0</b>
+</div>
+
+<div class="stat orange" onclick="showTodayCollection()">
+आज की वसूली
+<b id="todayCollection">₹0</b>
+</div>
+
+</div>
+</div>
+
+<div class="card">
+<h2>💰 कुल स्थिति</h2>
 
 <div class="stats">
 
@@ -272,510 +313,6 @@ button{
 <b id="totalRemain">₹0</b>
 </div>
 
-</div>
-
-</div>
-
-
-<div class="card">
-
-<h2>👥 ग्राहकों का हिसाब</h2>
-
-<div id="list"></div>
-
-</div>
-
-
-<div class="card qrbox">
-
-<h2>🔳 QR कोड</h2>
-
-<p class="small">
-इस ऐप का लिंक QR में खोलने के लिए नीचे बटन दबाएँ।
-</p>
-
-<button class="qr" onclick="makeQR()">
-🔳 QR कोड बनाएं
-</button>
-
-<img id="qrImage" alt="QR Code">
-
-</div>
-
-</div>
-
-
-<script>
-
-const KEY="udharii_hisab_pro_v2";
-
-let customers=
-JSON.parse(
-localStorage.getItem(KEY) || "[]"
-);
-
-
-function money(n){
-
- return "₹" +
- Number(n || 0)
- .toLocaleString("en-IN",{
-   maximumFractionDigits:2
- });
-
-}
-
-
-function save(){
-
- localStorage.setItem(
-   KEY,
-   JSON.stringify(customers)
- );
-
- render();
-
-}
-
-
-function addCustomer(){
-
- const name=
- document.getElementById("name")
- .value.trim();
-
- const mobile=
- document.getElementById("mobile")
- .value.trim();
-
- const amount=
- Number(
-   document.getElementById("amount").value
- );
-
- const note=
- document.getElementById("note")
- .value.trim();
-
-
- if(!name){
-
-   alert("कृपया ग्राहक का नाम लिखें।");
-   return;
-
- }
-
-
- if(!amount || amount<=0){
-
-   alert("कृपया सही रकम लिखें।");
-   return;
-
- }
-
-
- if(
-   mobile &&
-   !/^\d{10}$/.test(mobile)
- ){
-
-   alert(
-     "मोबाइल नंबर 10 अंकों का होना चाहिए।"
-   );
-
-   return;
-
- }
-
-
- customers.push({
-
-   id:Date.now(),
-
-   name:name,
-
-   mobile:mobile,
-
-   debt:amount,
-
-   paid:0,
-
-   note:note
-
- });
-
-
- document.getElementById("name").value="";
- document.getElementById("mobile").value="";
- document.getElementById("amount").value="";
- document.getElementById("note").value="";
-
-
- save();
-
-}
-
-
-function deposit(id){
-
- const c=
- customers.find(
-   x=>x.id===id
- );
-
-
- if(!c) return;
-
-
- const remain=
- c.debt-c.paid;
-
-
- if(remain<=0){
-
-   alert(
-     "पूरी उधारी जमा हो चुकी है।"
-   );
-
-   return;
-
- }
-
-
- const value=
- prompt(
-   "कितनी रकम जमा हुई?",
-   remain
- );
-
-
- if(value===null) return;
-
-
- const amount=
- Number(value);
-
-
- if(!amount || amount<=0){
-
-   alert("सही रकम डालें।");
-   return;
-
- }
-
-
- if(amount>remain){
-
-   alert(
-     "जमा रकम बाकी रकम से ज्यादा नहीं हो सकती।"
-   );
-
-   return;
-
- }
-
-
- c.paid+=amount;
-
- save();
-
-}
-
-
-function removeCustomer(id){
-
- if(
-   !confirm(
-     "क्या आप यह हिसाब हटाना चाहते हैं?"
-   )
- ){
-
-   return;
-
- }
-
-
- customers=
- customers.filter(
-   x=>x.id!==id
- );
-
-
- save();
-
-}
-
-
-function whatsapp(id){
-
- const c=
- customers.find(
-   x=>x.id===id
- );
-
-
- if(!c) return;
-
-
- const remain=
- c.debt-c.paid;
-
-
- let message=
- `नमस्ते ${c.name} जी,
-
-उधारी हिसाब:
-
-कुल उधारी: ${money(c.debt)}
-जमा: ${money(c.paid)}
-बाकी: ${money(remain)}
-`;
-
-
- if(c.note){
-
-   message+=
-   `नोट: ${c.note}
-`;
-
- }
-
-
- message+=
- "\nधन्यवाद।";
-
-
- if(!c.mobile){
-
-   alert(
-     "इस ग्राहक का मोबाइल नंबर सेव नहीं है।"
-   );
-
-   return;
-
- }
-
-
- const phone=
- "91"+c.mobile;
-
-
- window.open(
-   "https://wa.me/"+phone+
-   "?text="+
-   encodeURIComponent(message),
-   "_blank"
- );
-
-}
-
-
-function escapeHTML(text){
-
- return String(text)
-
- .replaceAll("&","&amp;")
-
- .replaceAll("<","&lt;")
-
- .replaceAll(">","&gt;")
-
- .replaceAll('"',"&quot;")
-
- .replaceAll("'","&#039;");
-
-}
-
-
-function render(){
-
- const list=
- document.getElementById("list");
-
- list.innerHTML="";
-
-
- let totalDebt=0;
- let totalPaid=0;
- let totalRemain=0;
-
-
- if(customers.length===0){
-
-   list.innerHTML=
-   '<div class="empty">'+
-   'अभी कोई उधारी नहीं जोड़ी गई।'+
-   '</div>';
-
- }
-
-
- customers.forEach(c=>{
-
-   const remain=
-   Math.max(
-     0,
-     c.debt-c.paid
-   );
-
-
-   totalDebt+=c.debt;
-   totalPaid+=c.paid;
-   totalRemain+=remain;
-
-
-   const div=
-   document.createElement("div");
-
-
-   div.className="customer";
-
-
-   div.innerHTML=`
-
-   <h3>
-   👤 ${escapeHTML(c.name)}
-   </h3>
-
-   ${
-     c.mobile
-     ?
-     `<div>
-       📱 ${escapeHTML(c.mobile)}
-      </div>`
-     :
-     ""
-   }
-
-   <div class="balance ${
-     remain>0
-     ? "redtxt"
-     : "greentxt"
-   }">
-
-   ${
-     remain>0
-     ? "🔴 बाकी: "
-     : "🟢 पूरा जमा: "
-   }
-
-   ${money(remain)}
-
-   </div>
-
-   <div class="small">
-
-   कुल उधारी:
-   ${money(c.debt)}
-
-   •
-
-   जमा:
-   ${money(c.paid)}
-
-   </div>
-
-   ${
-     c.note
-     ?
-     `<div class="small">
-       📝 ${escapeHTML(c.note)}
-      </div>`
-     :
-     ""
-   }
-
-
-   <div class="actions">
-
-   ${
-     remain>0
-     ?
-     `<button
-       class="deposit"
-       onclick="deposit(${c.id})">
-
-       💵 उधारी जमा
-
-      </button>`
-     :
-     ""
-   }
-
-
-   <button
-     class="whatsapp"
-     onclick="whatsapp(${c.id})">
-
-     📱 WhatsApp
-
-   </button>
-
-
-   <button
-     class="delete"
-     onclick="removeCustomer(${c.id})">
-
-     🗑️ हटाएं
-
-   </button>
-
-   </div>
-
-   `;
-
-
-   list.appendChild(div);
-
- });
-
-
- document.getElementById(
-   "totalDebt"
- ).textContent=
- money(totalDebt);
-
-
- document.getElementById(
-   "totalPaid"
- ).textContent=
- money(totalPaid);
-
-
- document.getElementById(
-   "totalRemain"
- ).textContent=
- money(totalRemain);
-
-}
-
-
-function makeQR(){
-
- const img=
- document.getElementById(
-   "qrImage"
- );
-
-
- const url=
- window.location.href;
-
-
- img.src=
- "https://api.qrserver.com/v1/create-qr-code/"+
- "?size=220x220&data="+
- encodeURIComponent(url);
-
-
- img.style.display="block";
-
-}
-
-
-render();
-
-</script>
-
-</body>
- </html>
+<div class="stat orange">
+कुल ग्राहक
+<b id="totalCustomers">0</b>
