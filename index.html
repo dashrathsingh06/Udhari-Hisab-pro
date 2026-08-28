@@ -3,166 +3,135 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shree PrabhuRaj Indian Oil</title>
+<title>उधारी हिसाब Pro</title>
 
 <style>
 *{box-sizing:border-box}
+
 body{
-  margin:0;
-  font-family:Arial,"Noto Sans Devanagari",sans-serif;
-  background:#eef3f7;
-  color:#172033;
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:#f1f5f9;
+ color:#172033;
 }
+
 header{
-  background:linear-gradient(135deg,#087f6b,#12a58e);
-  color:white;
-  padding:28px 20px;
-  text-align:center;
+ background:#087f5b;
+ color:white;
+ padding:22px 20px;
 }
+
 header h1{
-  margin:0;
-  font-size:30px;
+ margin:0;
+ font-size:30px;
 }
+
 header p{
-  margin:10px 0 0;
-  font-size:18px;
+ margin:8px 0 0;
+ font-size:17px;
 }
-nav{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
-  padding:18px 14px;
+
+.container{
+ max-width:700px;
+ margin:auto;
+ padding:18px;
 }
-nav button{
-  border:0;
-  padding:15px 5px;
-  border-radius:18px;
-  background:#e5ebef;
-  font-size:17px;
-  font-weight:bold;
+
+.cards{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:14px;
 }
-nav button.active{
-  background:#078875;
-  color:white;
-}
-.page{display:none;padding:0 15px 40px}
-.page.active{display:block}
 
 .card{
-  background:white;
-  border-radius:30px;
-  padding:28px;
-  margin-bottom:20px;
-  box-shadow:0 5px 20px #0000000c;
+ background:#ecfdf5;
+ border:2px solid #c7f3df;
+ border-radius:22px;
+ padding:22px;
 }
+
+.card small{
+ font-size:19px;
+}
+
+.card b{
+ display:block;
+ font-size:30px;
+ margin-top:8px;
+}
+
+.box{
+ background:white;
+ border-radius:24px;
+ padding:25px;
+ margin-top:18px;
+ box-shadow:0 4px 15px #00000010;
+}
+
 h2{
-  color:#087f6b;
-  font-size:32px;
-  margin-top:0;
+ margin-top:0;
+ font-size:27px;
 }
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:16px;
-}
-.stat{
-  border-radius:25px;
-  padding:22px;
-  min-height:145px;
-}
-.stat h3{
-  margin:0 0 15px;
-  font-size:20px;
-}
-.stat b{
-  font-size:30px;
-}
-.blue{background:#e3efff;color:#1769aa}
-.green{background:#e2f8ea;color:#16823c}
-.red{background:#ffe5e5;color:#c72d2d}
-.yellow{background:#fff5cf;color:#8d6d00}
 
-label{
-  display:block;
-  font-size:20px;
-  font-weight:bold;
-  margin:20px 0 8px;
+input{
+ width:100%;
+ padding:16px;
+ border:2px solid #d8dde3;
+ border-radius:15px;
+ font-size:18px;
+ margin:7px 0;
 }
-input,select,textarea{
-  width:100%;
-  padding:18px;
-  border:2px solid #dce1e5;
-  border-radius:18px;
-  font-size:18px;
-  outline:none;
-}
-textarea{min-height:100px}
 
-.btn{
-  width:100%;
-  border:0;
-  border-radius:18px;
-  padding:18px;
-  margin-top:20px;
-  background:#078875;
-  color:white;
-  font-size:20px;
-  font-weight:bold;
+button{
+ width:100%;
+ border:0;
+ padding:16px;
+ border-radius:15px;
+ font-size:18px;
+ font-weight:bold;
+ margin-top:10px;
+ cursor:pointer;
 }
-.btn.greenbtn{background:#20c968}
-.btn.redbtn{background:#df3030}
+
+.primary{background:#087f5b;color:white}
+.blue{background:#2563eb;color:white}
+.red{background:#dc2626;color:white}
+.gray{background:#e5e7eb;color:#172033}
 
 .customer{
-  border:2px solid #ddd;
-  border-left:7px solid #e03030;
-  border-radius:25px;
-  padding:20px;
-  margin-top:18px;
+ border:2px solid #e5e7eb;
+ border-radius:18px;
+ padding:17px;
+ margin-top:12px;
 }
+
 .customer h3{
-  font-size:23px;
-  margin:0 0 8px;
+ margin:0 0 6px;
+ font-size:21px;
 }
-.balance{
-  color:#d12d2d;
-  font-size:25px;
-  font-weight:bold;
+
+.amount{
+ font-size:25px;
+ font-weight:bold;
+ color:#dc2626;
 }
-.actions{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin-top:15px;
+
+.hidden{display:none}
+
+.history{
+ background:#f8fafc;
+ padding:12px;
+ border-radius:12px;
+ margin-top:10px;
 }
-.actions button{
-  border:0;
-  border-radius:18px;
-  padding:15px 8px;
-  font-size:17px;
-  font-weight:bold;
-  color:white;
-  background:#1faa5b;
+
+.green{
+ color:#087f5b;
 }
-.actions button:nth-child(2){background:#20c968}
-.actions button:nth-child(3){
-  background:#078875;
-  grid-column:1/3;
-}
-.transaction{
-  background:white;
-  border-radius:22px;
-  padding:20px;
-  margin-top:15px;
-  border-left:7px solid #d92f2f;
-}
-.transaction .amount{
-  font-size:28px;
-  font-weight:bold;
-}
-.empty{
-  text-align:center;
-  color:#777;
-  padding:30px;
+
+@media(max-width:500px){
+ .cards{grid-template-columns:1fr 1fr}
+ header h1{font-size:27px}
 }
 </style>
 </head>
@@ -170,557 +139,351 @@ textarea{min-height:100px}
 <body>
 
 <header>
-  <h1>⛽ Shree PrabhuRaj Indian Oil</h1>
-  <p>उधारी एवं दैनिक हिसाब प्रबंधन</p>
+<h1>📒 उधारी हिसाब Pro</h1>
+<p>ग्राहक का पूरा हिसाब आसानी से संभालें</p>
 </header>
 
-<nav>
-  <button class="active" onclick="showPage('dashboard',this)">डैशबोर्ड</button>
-  <button onclick="showPage('entry',this)">नई एंट्री</button>
-  <button onclick="showPage('customers',this)">ग्राहक</button>
-  <button onclick="showPage('reports',this)">रिपोर्ट</button>
-</nav>
+<div class="container">
 
-<!-- DASHBOARD -->
-<section id="dashboard" class="page active">
-
+<div class="cards">
 <div class="card">
-<h2>आज का हिसाब</h2>
-
-<div class="grid">
-
-<div class="stat blue">
-<h3>कुल बिक्री</h3>
-<b id="totalSales">₹0</b>
-</div>
-
-<div class="stat green">
-<h3>कैश</h3>
-<b id="totalCash">₹0</b>
-</div>
-
-<div class="stat blue">
-<h3>UPI / Paytm</h3>
-<b id="totalUpi">₹0</b>
-</div>
-
-<div class="stat red">
-<h3>आज की उधारी</h3>
-<b id="todayCredit">₹0</b>
-</div>
-
-<div class="stat green">
-<h3>आज की वसूली</h3>
-<b id="todayCollection">₹0</b>
-</div>
-
-<div class="stat yellow">
-<h3>कुल बाकी</h3>
-<b id="totalBalance">₹0</b>
-</div>
-
-</div>
+<small>कुल ग्राहक</small>
+<b id="totalCustomers">0</b>
 </div>
 
 <div class="card">
-<h2>आज के लेन-देन</h2>
-<div id="dashboardTransactions"></div>
+<small>कुल उधारी</small>
+<b id="totalDebt">₹0</b>
+</div>
 </div>
 
-</section>
+<div class="box">
+<h2>➕ नया ग्राहक</h2>
 
-<!-- ENTRY -->
-<section id="entry" class="page">
-
-<div class="card">
-<h2>➕ नई एंट्री</h2>
-
-<label>लेन-देन प्रकार</label>
-<select id="type">
-<option value="credit">उधारी</option>
-<option value="collection">वसूली</option>
-<option value="cash">कैश बिक्री</option>
-<option value="upi">UPI / Paytm</option>
-</select>
-
-<label>ग्राहक का नाम</label>
 <input id="name" placeholder="ग्राहक का नाम">
 
-<label>मोबाइल नंबर</label>
-<input id="mobile" type="tel" maxlength="10"
-placeholder="10 अंकों का मोबाइल नंबर">
+<input id="phone" type="tel" maxlength="10"
+placeholder="WhatsApp मोबाइल नंबर">
 
-<label>रकम</label>
-<input id="amount" type="number" placeholder="जैसे 500">
-
-<label>नोट</label>
-<textarea id="note"
-placeholder="जैसे पेट्रोल, डीजल आदि..."></textarea>
-
-<button class="btn" onclick="addEntry()">एंट्री सेव करें</button>
-
+<button class="primary" onclick="addCustomer()">
+ग्राहक जोड़ें
+</button>
 </div>
-</section>
 
-<!-- CUSTOMERS -->
-<section id="customers" class="page">
-
-<div class="card">
-<h2>👥 ग्राहक और बाकी</h2>
+<div class="box">
+<h2>🔎 ग्राहक खोजें</h2>
 
 <input id="search"
-oninput="renderCustomers()"
-placeholder="नाम / मोबाइल / वाहन खोजें...">
+placeholder="नाम या मोबाइल नंबर से खोजें"
+oninput="showCustomers()">
 
 <div id="customerList"></div>
 </div>
 
-</section>
+<div class="box hidden" id="accountBox">
 
-<!-- REPORT -->
-<section id="reports" class="page">
+<h2>👤 ग्राहक का हिसाब</h2>
 
-<div class="card">
-<h2>📊 रिपोर्ट</h2>
+<div id="accountInfo"></div>
 
-<label>तारीख</label>
-<input type="date" id="reportDate"
-onchange="renderReport()">
+<input id="debtAmount" type="number"
+placeholder="उधारी रकम ₹">
 
-<div class="grid" style="margin-top:20px">
+<button class="red" onclick="addDebt()">
+➕ उधारी जोड़ें
+</button>
 
-<div class="stat red">
-<h3>उधारी</h3>
-<b id="reportCredit">₹0</b>
-</div>
+<input id="paidAmount" type="number"
+placeholder="जमा रकम ₹">
 
-<div class="stat green">
-<h3>वसूली</h3>
-<b id="reportCollection">₹0</b>
-</div>
+<button class="blue" onclick="addPayment()">
+💰 जमा रकम दर्ज करें
+</button>
 
-<div class="stat blue">
-<h3>कैश</h3>
-<b id="reportCash">₹0</b>
-</div>
+<button class="primary" onclick="sendWhatsApp()">
+📲 WhatsApp पर हिसाब भेजें
+</button>
 
-<div class="stat blue">
-<h3>UPI / Paytm</h3>
-<b id="reportUpi">₹0</b>
-</div>
+<button class="gray" onclick="closeAccount()">
+बंद करें
+</button>
+
+<div id="history"></div>
 
 </div>
 
-<h2 style="margin-top:35px">सभी लेन-देन</h2>
-<div id="reportTransactions"></div>
-
 </div>
-</section>
 
 <script>
 
-let data = JSON.parse(localStorage.getItem("udhariData") || "[]");
+let customers =
+JSON.parse(localStorage.getItem("customers") || "[]");
 
-const today = () => {
-  let d = new Date();
-  return d.toISOString().split("T")[0];
-};
-
-document.getElementById("reportDate").value = today();
-
-function money(n){
-  return "₹" + Number(n || 0).toLocaleString("en-IN");
-}
+let selectedCustomer = null;
 
 function save(){
-  localStorage.setItem("udhariData",JSON.stringify(data));
+ localStorage.setItem("customers",JSON.stringify(customers));
+ updateStats();
+ showCustomers();
 }
 
-function showPage(id,btn){
+function updateStats(){
 
-  document.querySelectorAll(".page")
-  .forEach(p=>p.classList.remove("active"));
+document.getElementById("totalCustomers").innerText =
+customers.length;
 
-  document.getElementById(id).classList.add("active");
+let total = customers.reduce(
+(sum,c)=>sum + Number(c.balance || 0),0
+);
 
-  document.querySelectorAll("nav button")
-  .forEach(b=>b.classList.remove("active"));
-
-  btn.classList.add("active");
-
-  if(id==="dashboard") renderDashboard();
-  if(id==="customers") renderCustomers();
-  if(id==="reports") renderReport();
+document.getElementById("totalDebt").innerText =
+"₹" + total.toFixed(2);
 }
 
-function addEntry(){
+function addCustomer(){
 
-  let type=document.getElementById("type").value;
-  let name=document.getElementById("name").value.trim();
-  let mobile=document.getElementById("mobile").value.trim();
-  let amount=Number(document.getElementById("amount").value);
-  let note=document.getElementById("note").value.trim();
+let name =
+document.getElementById("name").value.trim();
 
-  if(!name){
-    alert("ग्राहक का नाम डालिए");
-    return;
-  }
+let phone =
+document.getElementById("phone").value.trim();
 
-  if(!amount || amount<=0){
-    alert("सही रकम डालिए");
-    return;
-  }
-
-  let item={
-    id:Date.now(),
-    date:today(),
-    time:new Date().toLocaleTimeString("en-IN",{
-      hour:"2-digit",
-      minute:"2-digit"
-    }),
-    type,
-    name,
-    mobile,
-    amount,
-    note
-  };
-
-  data.push(item);
-  save();
-
-  alert("एंट्री सफलतापूर्वक सेव हो गई ✅");
-
-  document.getElementById("name").value="";
-  document.getElementById("mobile").value="";
-  document.getElementById("amount").value="";
-  document.getElementById("note").value="";
-
-  renderDashboard();
+if(!name){
+ alert("ग्राहक का नाम डालिए");
+ return;
 }
 
-function getCustomerBalance(name,mobile){
-
-  let balance=0;
-
-  data.forEach(x=>{
-
-    if(x.name===name && x.mobile===mobile){
-
-      if(x.type==="credit") balance+=x.amount;
-
-      if(x.type==="collection") balance-=x.amount;
-    }
-
-  });
-
-  return balance;
+if(phone.length !== 10 || !/^[0-9]+$/.test(phone)){
+ alert("सही 10 अंकों का मोबाइल नंबर डालिए");
+ return;
 }
 
-function renderDashboard(){
+let exists = customers.find(c=>c.phone===phone);
 
-  let todayData=data.filter(x=>x.date===today());
-
-  let credit=todayData
-    .filter(x=>x.type==="credit")
-    .reduce((a,b)=>a+b.amount,0);
-
-  let collection=todayData
-    .filter(x=>x.type==="collection")
-    .reduce((a,b)=>a+b.amount,0);
-
-  let cash=todayData
-    .filter(x=>x.type==="cash")
-    .reduce((a,b)=>a+b.amount,0);
-
-  let upi=todayData
-    .filter(x=>x.type==="upi")
-    .reduce((a,b)=>a+b.amount,0);
-
-  let totalBalance=data.reduce((sum,x)=>{
-
-    if(x.type==="credit") return sum+x.amount;
-
-    if(x.type==="collection") return sum-x.amount;
-
-    return sum;
-
-  },0);
-
-  document.getElementById("totalSales").textContent=
-    money(cash+upi);
-
-  document.getElementById("totalCash").textContent=money(cash);
-
-  document.getElementById("totalUpi").textContent=money(upi);
-
-  document.getElementById("todayCredit").textContent=money(credit);
-
-  document.getElementById("todayCollection").textContent=
-    money(collection);
-
-  document.getElementById("totalBalance").textContent=
-    money(totalBalance);
-
-  let box=document.getElementById("dashboardTransactions");
-
-  if(!todayData.length){
-    box.innerHTML='<div class="empty">आज कोई लेन-देन नहीं है</div>';
-    return;
-  }
-
-  box.innerHTML=todayData
-  .slice()
-  .reverse()
-  .map(transactionHTML)
-  .join("");
+if(exists){
+ alert("यह मोबाइल नंबर पहले से मौजूद है");
+ return;
 }
 
-function transactionHTML(x){
+customers.push({
+ id:Date.now(),
+ name:name,
+ phone:phone,
+ balance:0,
+ history:[]
+});
 
-  let title=
-    x.type==="credit" ? "उधारी" :
-    x.type==="collection" ? "वसूली" :
-    x.type==="cash" ? "कैश" :
-    "UPI / Paytm";
+document.getElementById("name").value="";
+document.getElementById("phone").value="";
 
-  return `
-  <div class="transaction">
-    <h3>${escapeHTML(x.name)}
-      <small>${title}</small>
-    </h3>
+save();
 
-    <div class="amount">${money(x.amount)}</div>
-
-    <p>
-      📅 ${x.date} • ${x.time}<br>
-      📱 ${escapeHTML(x.mobile || "-")}
-    </p>
-
-    ${x.note ? `<p>${escapeHTML(x.note)}</p>` : ""}
-  </div>
-  `;
+alert("ग्राहक सफलतापूर्वक जुड़ गया ✅");
 }
 
-function renderCustomers(){
+function showCustomers(){
 
-  let search=document.getElementById("search")
-    .value.toLowerCase();
+let search =
+document.getElementById("search").value
+.toLowerCase().trim();
 
-  let customers={};
+let list =
+document.getElementById("customerList");
 
-  data.forEach(x=>{
+list.innerHTML="";
 
-    let key=x.name+"_"+x.mobile;
+let filtered = customers.filter(c =>
+c.name.toLowerCase().includes(search) ||
+c.phone.includes(search)
+);
 
-    if(!customers[key]){
-      customers[key]={
-        name:x.name,
-        mobile:x.mobile,
-        balance:0
-      };
-    }
-
-    if(x.type==="credit")
-      customers[key].balance+=x.amount;
-
-    if(x.type==="collection")
-      customers[key].balance-=x.amount;
-  });
-
-  let list=Object.values(customers)
-    .filter(c=>
-      c.name.toLowerCase().includes(search) ||
-      c.mobile.includes(search)
-    )
-    .filter(c=>c.balance>0);
-
-  let box=document.getElementById("customerList");
-
-  if(!list.length){
-    box.innerHTML=
-      '<div class="empty">कोई ग्राहक नहीं मिला</div>';
-    return;
-  }
-
-  box.innerHTML=list.map(c=>`
-
-  <div class="customer">
-
-    <h3>${escapeHTML(c.name)}</h3>
-
-    <p>📱 ${escapeHTML(c.mobile || "-")}</p>
-
-    <div class="balance">
-      🔴 बाकी: ${money(c.balance)}
-    </div>
-
-    <p>
-      कुल उधारी: ${money(
-        data.filter(x=>
-          x.name===c.name &&
-          x.mobile===c.mobile &&
-          x.type==="credit"
-        ).reduce((a,b)=>a+b.amount,0)
-      )}
-    </p>
-
-    <div class="actions">
-
-      <button onclick="collect('${safe(c.name)}','${safe(c.mobile)}')">
-        💵 वसूली
-      </button>
-
-      <button onclick="whatsapp('${safe(c.name)}','${safe(c.mobile)}',${c.balance})">
-        📱 WhatsApp
-      </button>
-
-      <button onclick="historyCustomer('${safe(c.name)}','${safe(c.mobile)}')">
-        📋 हिसाब देखें
-      </button>
-
-    </div>
-
-  </div>
-
-  `).join("");
+if(filtered.length===0){
+ list.innerHTML="<p>कोई ग्राहक नहीं मिला।</p>";
+ return;
 }
 
-function collect(name,mobile){
+filtered.forEach(c=>{
 
-  let amount=prompt(
-    "कितनी वसूली हुई?",
-    "500"
-  );
+let div=document.createElement("div");
+div.className="customer";
 
-  amount=Number(amount);
+div.innerHTML=`
+<h3>👤 ${escapeHtml(c.name)}</h3>
+<div>📱 ${c.phone}</div>
+<div class="amount">बाकी: ₹${Number(c.balance).toFixed(2)}</div>
+<button class="primary"
+onclick="openAccount(${c.id})">
+हिसाब खोलें
+</button>
+`;
 
-  if(!amount || amount<=0)return;
+list.appendChild(div);
 
-  data.push({
-    id:Date.now(),
-    date:today(),
-    time:new Date().toLocaleTimeString("en-IN"),
-    type:"collection",
-    name,
-    mobile,
-    amount,
-    note:"उधारी की वसूली"
-  });
-
-  save();
-  renderCustomers();
-  renderDashboard();
-
-  alert("वसूली सेव हो गई ✅");
+});
 }
 
-function whatsapp(name,mobile,balance){
+function openAccount(id){
 
-  if(!mobile){
-    alert("इस ग्राहक का मोबाइल नंबर नहीं है");
-    return;
-  }
+selectedCustomer =
+customers.find(c=>c.id===id);
 
-  let msg=
-`नमस्ते ${name} जी,
+if(!selectedCustomer)return;
 
-Shree PrabhuRaj Indian Oil
+document.getElementById("accountBox")
+.classList.remove("hidden");
 
-आपकी वर्तमान उधारी बाकी:
-${money(balance)}
+renderAccount();
 
-कृपया समय पर भुगतान करें।
-
-धन्यवाद 🙏`;
-
-  window.open(
-    "https://wa.me/91"+mobile+
-    "?text="+encodeURIComponent(msg),
-    "_blank"
-  );
+window.scrollTo({
+top:document.getElementById("accountBox").offsetTop-20,
+behavior:"smooth"
+});
 }
 
-function historyCustomer(name,mobile){
+function renderAccount(){
 
-  let records=data.filter(x=>
-    x.name===name && x.mobile===mobile
-  );
+let c=selectedCustomer;
 
-  let text=records.map(x=>
-    `${x.date} ${x.time} - ${
-      x.type==="credit"?"उधारी":"वसूली"
-    } ${money(x.amount)}`
-  ).join("\n");
+document.getElementById("accountInfo").innerHTML=`
+<div class="customer">
+<h3>👤 ${escapeHtml(c.name)}</h3>
+<div>📱 ${c.phone}</div>
+<h3 class="amount">
+बाकी उधारी: ₹${Number(c.balance).toFixed(2)}
+</h3>
+</div>
+`;
 
-  alert(
-    "📋 "+name+
-    "\n\n"+text
-  );
+let history =
+document.getElementById("history");
+
+if(!c.history || c.history.length===0){
+ history.innerHTML="<p>अभी कोई लेन-देन नहीं है।</p>";
+ return;
 }
 
-function renderReport(){
+history.innerHTML="<h3>📋 लेन-देन</h3>";
 
-  let date=document.getElementById("reportDate").value;
+[...c.history].reverse().forEach(h=>{
 
-  let list=data.filter(x=>x.date===date);
+let row=document.createElement("div");
+row.className="history";
 
-  let credit=sumType(list,"credit");
-  let collection=sumType(list,"collection");
-  let cash=sumType(list,"cash");
-  let upi=sumType(list,"upi");
+row.innerHTML=`
+<b>${h.type==="debt"?"🔴 उधारी":"🟢 जमा"}</b>
+<br>
+₹${Number(h.amount).toFixed(2)}
+<br>
+<small>${h.date}</small>
+`;
 
-  document.getElementById("reportCredit").textContent=
-    money(credit);
+history.appendChild(row);
 
-  document.getElementById("reportCollection").textContent=
-    money(collection);
-
-  document.getElementById("reportCash").textContent=
-    money(cash);
-
-  document.getElementById("reportUpi").textContent=
-    money(upi);
-
-  let box=document.getElementById("reportTransactions");
-
-  if(!list.length){
-    box.innerHTML=
-      '<div class="empty">इस तारीख को कोई लेन-देन नहीं है</div>';
-    return;
-  }
-
-  box.innerHTML=list
-    .slice()
-    .reverse()
-    .map(transactionHTML)
-    .join("");
+});
 }
 
-function sumType(list,type){
+function addDebt(){
 
-  return list
-    .filter(x=>x.type===type)
-    .reduce((a,b)=>a+b.amount,0);
+let amount =
+Number(document.getElementById("debtAmount").value);
+
+if(!selectedCustomer)return;
+
+if(!amount || amount<=0){
+ alert("सही उधारी रकम डालिए");
+ return;
 }
 
-function escapeHTML(str){
+selectedCustomer.balance += amount;
 
-  return String(str)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+selectedCustomer.history.push({
+ type:"debt",
+ amount:amount,
+ date:new Date().toLocaleString("hi-IN")
+});
+
+document.getElementById("debtAmount").value="";
+
+save();
+renderAccount();
+
+alert("उधारी जोड़ दी गई ✅");
 }
 
-function safe(str){
+function addPayment(){
 
-  return String(str)
-    .replaceAll("'","\\'")
-    .replaceAll('"','\\"');
+let amount =
+Number(document.getElementById("paidAmount").value);
+
+if(!selectedCustomer)return;
+
+if(!amount || amount<=0){
+ alert("सही जमा रकम डालिए");
+ return;
 }
 
-renderDashboard();
+if(amount > selectedCustomer.balance){
+ alert("जमा रकम बाकी उधारी से ज्यादा है");
+ return;
+}
+
+selectedCustomer.balance -= amount;
+
+selectedCustomer.history.push({
+ type:"paid",
+ amount:amount,
+ date:new Date().toLocaleString("hi-IN")
+});
+
+document.getElementById("paidAmount").value="";
+
+save();
+renderAccount();
+
+alert("जमा रकम दर्ज हो गई ✅");
+}
+
+function sendWhatsApp(){
+
+if(!selectedCustomer)return;
+
+let c=selectedCustomer;
+
+let message =
+"नमस्ते "+c.name+" जी,%0A%0A"+
+"📒 उधारी हिसाब%0A"+
+"कुल बाकी उधारी: ₹"+
+Number(c.balance).toFixed(2)+
+"%0A%0Aधन्यवाद 🙏";
+
+let phone="91"+c.phone;
+
+window.open(
+"https://wa.me/"+phone+"?text="+message,
+"_blank"
+);
+}
+
+function closeAccount(){
+
+document.getElementById("accountBox")
+.classList.add("hidden");
+
+selectedCustomer=null;
+}
+
+function escapeHtml(text){
+
+return text
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+}
+
+updateStats();
+showCustomers();
 
 </script>
 
